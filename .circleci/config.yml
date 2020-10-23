@@ -10,7 +10,7 @@ jobs:
     working_directory: ~/
     machine: true
     steps:
-      - run: docker build -t amilinko/client ./client
+      - run: docker build -t amilinko/client ~/client
       - run: docker build -t amilinko/nginx ./nginx
       - run: docker build -t amilinko/server ./server
       - run: docker build -t amilinko/worker ./worker
