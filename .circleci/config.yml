@@ -5,7 +5,7 @@ jobs:
     steps:
       - run: pwd
       - run:
-          command: ls -al
+          command: ls
       - run: cd client
       - run: pwd
       - run: docker build -t amilinko/react-test -f client/Dockerfile.dev client
