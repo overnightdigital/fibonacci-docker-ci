@@ -3,6 +3,7 @@ jobs:
   test:
     machine: true
     steps:
+      - checkout
       - run: pwd
       - run:
           command: ls
@@ -13,7 +14,8 @@ jobs:
   build:
     machine: true
     steps:
-      - run: docker build -t amilinko/client /client
+      - checkout
+      - run: cd client && docker build -t amilinko/client
       - run: docker build -t amilinko/nginx /nginx
       - run: docker build -t amilinko/server /server
       - run: docker build -t amilinko/worker /worker
