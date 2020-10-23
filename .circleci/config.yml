@@ -4,21 +4,16 @@ jobs:
     machine: true
     steps:
       - checkout
-      - run: pwd
-      - run:
-          command: ls
-      - run: cd client
-      - run: pwd
       - run: docker build -t amilinko/react-test -f client/Dockerfile.dev client
       - run: docker run -e CI=true amilinko/react-test npm test
   build:
     machine: true
     steps:
       - checkout
-      - run: cd client && docker build -t amilinko/client
-      - run: docker build -t amilinko/nginx /nginx
-      - run: docker build -t amilinko/server /server
-      - run: docker build -t amilinko/worker /worker
+      - run: docker build -t amilinko/client ./client
+      - run: docker build -t amilinko/nginx ./nginx
+      - run: docker build -t amilinko/server ./server
+      - run: docker build -t amilinko/worker ./worker
       - run: echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_ID --password-stdin
       - run: docker push amilinko/client
       - run: docker push amilinko/nginx
