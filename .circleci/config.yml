@@ -4,17 +4,16 @@ jobs:
     working_directory: ~/app
     machine: true
     steps:
-      - run: docker build -t amilinko/react-test -f ./client/Dockerfile.dev ./client
+      - run: docker build -t amilinko/react-test -f /home/circleci/app/client/Dockerfile.dev /home/circleci/app/client
       - run: docker run -e CI=true amilinko/react-test npm test
   build:
     working_directory: ~/app
     machine: true
     steps:
-      - run: pwd
-      - run: docker build -t amilinko/client /home/circleci/client
-      - run: docker build -t amilinko/nginx ./nginx
-      - run: docker build -t amilinko/server ./server
-      - run: docker build -t amilinko/worker ./worker
+      - run: docker build -t amilinko/client /home/circleci/app/client
+      - run: docker build -t amilinko/nginx /home/circleci/app/nginx
+      - run: docker build -t amilinko/server /home/circleci/app/server
+      - run: docker build -t amilinko/worker /home/circleci/app/worker
       - run: echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_ID --password-stdin
       - run: docker push amilinko/client
       - run: docker push amilinko/nginx
