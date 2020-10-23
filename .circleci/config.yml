@@ -1,16 +1,17 @@
 version: 2
 jobs:
   test:
-    working_directory: ~/
+    working_directory: ~/app
     machine: true
     steps:
       - run: docker build -t amilinko/react-test -f ./client/Dockerfile.dev ./client
       - run: docker run -e CI=true amilinko/react-test npm test
   build:
-    working_directory: ~/
+    working_directory: ~/app
     machine: true
     steps:
-      - run: docker build -t amilinko/client ~/client
+      - run: ls
+      - run: docker build -t amilinko/client ./client
       - run: docker build -t amilinko/nginx ./nginx
       - run: docker build -t amilinko/server ./server
       - run: docker build -t amilinko/worker ./worker
