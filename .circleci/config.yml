@@ -4,7 +4,7 @@ jobs:
     machine: true
     steps:
       - checkout
-      - run: docker build -t amilinko/react-test -f client/Dockerfile.dev client
+      - run: docker build -t amilinko/react-test -f ./client/Dockerfile.dev ./client
       - run: docker run -e CI=true amilinko/react-test npm test
   build:
     machine: true
