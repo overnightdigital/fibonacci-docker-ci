@@ -10,8 +10,8 @@ jobs:
     working_directory: ~/app
     machine: true
     steps:
-      - run: ls
-      - run: docker build -t amilinko/client ./client
+      - run: pwd
+      - run: docker build -t amilinko/client /home/circleci/client
       - run: docker build -t amilinko/nginx ./nginx
       - run: docker build -t amilinko/server ./server
       - run: docker build -t amilinko/worker ./worker
