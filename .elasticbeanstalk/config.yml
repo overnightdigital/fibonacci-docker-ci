@@ -1,0 +1,9 @@
+branch-defaults:
+  master:
+    environment: elasticbeanstalk:MultiDocker-env
+global:
+  application_name: multi-docker
+  default_ec2_keyname: elasticbeanstalk:e-cwrdmeymms
+  default_platform: docker
+  default_region: eu-central-1
+  sc: git
