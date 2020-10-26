@@ -21,7 +21,7 @@ jobs:
       - run: docker push amilinko/worker
   deploy:
     machine: 
-      image: ubuntu-1604:201903-01
+      image: ubuntu-2004:202003-19
     steps:
       - checkout
       - run: 
@@ -29,6 +29,7 @@ jobs:
           command: |
             sudo apt-get -y -qq update
             sudo apt-get install python-pip python-dev build-essential
+            sudo pip install --upgrade setuptools
             sudo pip install awsebcli --upgrade
       - run:
           name: Deploying
