@@ -56,6 +56,7 @@ class Fib extends Component {
   render() {
     return (
       <div>
+        <p>Fib Calculator</p>
         <form onSubmit={this.handleSubmit}>
           <label>Enter your indexes:</label>
           <input 
