@@ -27,10 +27,9 @@ jobs:
       - run: 
           name: Installing deployment dependencies
           command: |
-            sudo apt-get -y -qq update
-            sudo apt-get install python-pip python-dev build-essential
-            sudo pip install --upgrade setuptools
-            sudo pip install awsebcli --upgrade
+            sudo apt-get update
+            sudo apt install python3-pip
+            sudo pip3 install awsebcli --upgrade --user
       - run:
           name: Deploying
           command: eb deploy MultiDocker-env
